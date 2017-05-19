@@ -12,6 +12,12 @@
 		E71AB4121ECC36BC00044DA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71AB4101ECC36BC00044DA6 /* Main.storyboard */; };
 		E71AB4141ECC36BC00044DA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E71AB4131ECC36BC00044DA6 /* Assets.xcassets */; };
 		E71AB4171ECC36BC00044DA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71AB4151ECC36BC00044DA6 /* LaunchScreen.storyboard */; };
+		E71FC9621ECEA43F006D812A /* photo1.png in Resources */ = {isa = PBXBuildFile; fileRef = E71FC95D1ECEA43F006D812A /* photo1.png */; };
+		E71FC9631ECEA43F006D812A /* photo2.png in Resources */ = {isa = PBXBuildFile; fileRef = E71FC95E1ECEA43F006D812A /* photo2.png */; };
+		E71FC9641ECEA43F006D812A /* photo3.png in Resources */ = {isa = PBXBuildFile; fileRef = E71FC95F1ECEA43F006D812A /* photo3.png */; };
+		E71FC9651ECEA43F006D812A /* photo4.png in Resources */ = {isa = PBXBuildFile; fileRef = E71FC9601ECEA43F006D812A /* photo4.png */; };
+		E71FC9661ECEA43F006D812A /* photo5.png in Resources */ = {isa = PBXBuildFile; fileRef = E71FC9611ECEA43F006D812A /* photo5.png */; };
+		E71FC9681ECEA4F9006D812A /* PeekPagedScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FC9671ECEA4F9006D812A /* PeekPagedScrollViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		E71AB4131ECC36BC00044DA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E71AB4161ECC36BC00044DA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E71AB4181ECC36BC00044DA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E71FC95D1ECEA43F006D812A /* photo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo1.png; sourceTree = "<group>"; };
+		E71FC95E1ECEA43F006D812A /* photo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo2.png; sourceTree = "<group>"; };
+		E71FC95F1ECEA43F006D812A /* photo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo3.png; sourceTree = "<group>"; };
+		E71FC9601ECEA43F006D812A /* photo4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo4.png; sourceTree = "<group>"; };
+		E71FC9611ECEA43F006D812A /* photo5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo5.png; sourceTree = "<group>"; };
+		E71FC9671ECEA4F9006D812A /* PeekPagedScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeekPagedScrollViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +66,18 @@
 		E71AB40B1ECC36BC00044DA6 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				E71FC95D1ECEA43F006D812A /* photo1.png */,
+				E71FC95E1ECEA43F006D812A /* photo2.png */,
+				E71FC95F1ECEA43F006D812A /* photo3.png */,
+				E71FC9601ECEA43F006D812A /* photo4.png */,
+				E71FC9611ECEA43F006D812A /* photo5.png */,
 				E71AB40C1ECC36BC00044DA6 /* AppDelegate.swift */,
 				E71AB40E1ECC36BC00044DA6 /* ViewController.swift */,
 				E71AB4101ECC36BC00044DA6 /* Main.storyboard */,
 				E71AB4131ECC36BC00044DA6 /* Assets.xcassets */,
 				E71AB4151ECC36BC00044DA6 /* LaunchScreen.storyboard */,
 				E71AB4181ECC36BC00044DA6 /* Info.plist */,
+				E71FC9671ECEA4F9006D812A /* PeekPagedScrollViewController.swift */,
 			);
 			path = MovieApp;
 			sourceTree = "<group>";
@@ -124,8 +142,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E71FC9651ECEA43F006D812A /* photo4.png in Resources */,
+				E71FC9631ECEA43F006D812A /* photo2.png in Resources */,
+				E71FC9621ECEA43F006D812A /* photo1.png in Resources */,
 				E71AB4171ECC36BC00044DA6 /* LaunchScreen.storyboard in Resources */,
+				E71FC9661ECEA43F006D812A /* photo5.png in Resources */,
 				E71AB4141ECC36BC00044DA6 /* Assets.xcassets in Resources */,
+				E71FC9641ECEA43F006D812A /* photo3.png in Resources */,
 				E71AB4121ECC36BC00044DA6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +162,7 @@
 			files = (
 				E71AB40F1ECC36BC00044DA6 /* ViewController.swift in Sources */,
 				E71AB40D1ECC36BC00044DA6 /* AppDelegate.swift in Sources */,
+				E71FC9681ECEA4F9006D812A /* PeekPagedScrollViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,10 +287,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5K89RS36D9;
 				INFOPLIST_FILE = MovieApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kpu.2017class.MovieApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -276,10 +302,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5K89RS36D9;
 				INFOPLIST_FILE = MovieApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kpu.2017class.MovieApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -302,6 +330,7 @@
 				E71AB41D1ECC36BC00044DA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
