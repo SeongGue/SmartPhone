@@ -8,12 +8,85 @@
 
 import UIKit
 
-class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate {
+class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XMLParserDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageControl: UIPageControl!
     
     var pageImages: [UIImage] = []
     var pageViews: [UIImageView?] = []
+    
+    var parser = XMLParser()
+    var posts = NSMutableArray()
+    var elements = NSMutableDictionary()
+    var element = NSString()
+    var title1 = NSMutableString()
+    var date = NSMutableString()
+    var imageurl = NSMutableString()
+    
+    func beginParsing()
+    {
+        posts = []
+        parser = XMLParser(contentsOf:(URL(string:"https://apis.daum.net/contents/movie?apikey=ec4371baf735ac91f514b3dca6f74ff6&q=%EB%8F%99%EA%B0%91%EB%82%B4%EA%B8%B0%20%EA%B3%BC%EC%99%B8%ED%95%98%EA%B8%B0"))!)!
+        parser.delegate = self
+        parser.parse()
+        //tbData!.reloadData()
+    }
+
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String])
+    {
+        element = elementName as NSString
+        //if(elementName as NSString).isEqual(to: "dailyBoxOffice")
+        if(elementName as NSString).isEqual(to: "item")
+        {
+            elements = NSMutableDictionary()
+            elements = [:]
+            /*
+            title1 = NSMutableString()
+            title1 = ""
+            date = NSMutableString()
+            date = ""
+            */
+            imageurl = NSMutableString()
+            imageurl = ""
+        }
+    }
+    
+    func parser(_ parser: XMLParser, foundCharacters string: String!)
+    {
+        /*
+        if element.isEqual(to: "movieNm") {
+            title1.append(string)
+        } else if element.isEqual("openDt") {
+            date.append(string)
+        }else if element.isEqual("thumbnail") {
+            imageurl.append(string)
+        }
+ */
+        if element.isEqual("thumbnail") {
+            imageurl.append(string)
+        }
+    }
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!)
+    {
+        if (elementName as NSString).isEqual(to: "item") {
+            /*
+            if !title1.isEqual(nil) {
+                elements.setObject(title1, forKey: "movieNm" as NSCopying)
+            }
+            if !date.isEqual(nil) {
+                elements.setObject(date, forKey: "openDt" as NSCopying)
+            }
+            if !imageurl.isEqual(nil){
+                elements.setObject(date, forKey: "thumbnail" as NSCopying)
+            }
+            */
+            if !imageurl.isEqual(nil){
+                elements.setObject(date, forKey: "thumbnail" as NSCopying)
+            }
+            posts.add(elements)
+        }
+    }
     
     func loadPage(_ page: Int) {
         if page < 0 || page >= pageImages.count {
@@ -90,12 +163,27 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        beginParsing()
         
+        if let url = URL(string: (posts.object(at: 0) as AnyObject).value(forKey: "imageurl") as! NSString as String)
+        {
+            if let data = try? Data(contentsOf: url)
+            {
+                pageImages = [UIImage(data: data)!,
+                              UIImage(named: "photo2.png")!,
+                              UIImage(named: "photo3.png")!,
+                              UIImage(named: "photo4.png")!,
+                              UIImage(named: "photo5.png")!]
+            }
+        }
+        
+        /*
         pageImages = [UIImage(named: "photo1.png")!,
                       UIImage(named: "photo2.png")!,
                       UIImage(named: "photo3.png")!,
                       UIImage(named: "photo4.png")!,
                       UIImage(named: "photo5.png")!]
+         */
         
         let pageCount = pageImages.count
         
@@ -109,6 +197,7 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate {
         let pagesScrollViewSize = scrollView.frame.size
         scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(pageImages.count),
                                         height: pagesScrollViewSize.height)
+        
         
         loadVisiblePages()
     }
