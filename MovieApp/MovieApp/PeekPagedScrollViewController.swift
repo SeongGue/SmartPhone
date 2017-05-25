@@ -179,7 +179,12 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XML
     override func viewDidLoad() {
         super.viewDidLoad()
         beginParsing()
-        pageImages.append(thumbnailParser.getThumbnail(movieName: "겟 아웃"))
+        for i in 0..<posts.count{
+            let movieName = (posts.object(at: i) as AnyObject).value(forKey: "movieNm") as! NSString as String
+            pageImages.append(thumbnailParser.getThumbnail(movieName: movieName))
+        }
+   //     (posts.object(at: indexPath.row) as AnyObject).value(forKey: "title") as! NSString as String
+        
         /*
         if let url = URL(string: "http://t1.search.daumcdn.net/thumb/R438x0.q85/?fname=http%3A%2F%2Fcfile189.uf.daum.net%2Fimage%2F156F1B10AB48241E6AB36C")
         {
