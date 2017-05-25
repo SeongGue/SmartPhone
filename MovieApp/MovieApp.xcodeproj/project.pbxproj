@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E71144C61ED593FA003012A9 /* ThumbnailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71144C51ED593FA003012A9 /* ThumbnailParser.swift */; };
 		E71AB40D1ECC36BC00044DA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71AB40C1ECC36BC00044DA6 /* AppDelegate.swift */; };
 		E71AB40F1ECC36BC00044DA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71AB40E1ECC36BC00044DA6 /* ViewController.swift */; };
 		E71AB4121ECC36BC00044DA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71AB4101ECC36BC00044DA6 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E71144C51ED593FA003012A9 /* ThumbnailParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailParser.swift; sourceTree = "<group>"; };
 		E71AB4091ECC36BC00044DA6 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E71AB40C1ECC36BC00044DA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E71AB40E1ECC36BC00044DA6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				E71AB4151ECC36BC00044DA6 /* LaunchScreen.storyboard */,
 				E71AB4181ECC36BC00044DA6 /* Info.plist */,
 				E71FC9671ECEA4F9006D812A /* PeekPagedScrollViewController.swift */,
+				E71144C51ED593FA003012A9 /* ThumbnailParser.swift */,
 			);
 			path = MovieApp;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E71144C61ED593FA003012A9 /* ThumbnailParser.swift in Sources */,
 				E71AB40F1ECC36BC00044DA6 /* ViewController.swift in Sources */,
 				E71AB40D1ECC36BC00044DA6 /* AppDelegate.swift in Sources */,
 				E71FC9681ECEA4F9006D812A /* PeekPagedScrollViewController.swift in Sources */,

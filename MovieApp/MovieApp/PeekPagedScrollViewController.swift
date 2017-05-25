@@ -11,7 +11,7 @@ import UIKit
 class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XMLParserDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageControl: UIPageControl!
-    
+    var thumbnailParser = ThumbnailParser()
     var pageImages: [UIImage] = []
     var pageViews: [UIImageView?] = []
     
@@ -26,54 +26,67 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XML
     func beginParsing()
     {
         posts = []
+        /*
         parser = XMLParser(contentsOf:(URL(string:"https://apis.daum.net/contents/movie?apikey=ec4371baf735ac91f514b3dca6f74ff6&q=%EB%8F%99%EA%B0%91%EB%82%B4%EA%B8%B0%20%EA%B3%BC%EC%99%B8%ED%95%98%EA%B8%B0"))!)!
+         */
+        parser = XMLParser(contentsOf:(URL(string:"http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=9441603806499445c9216fe146a530e2&targetDt=20170521"))!)!
         parser.delegate = self
         parser.parse()
         //tbData!.reloadData()
     }
 
+    
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String])
     {
         element = elementName as NSString
         //if(elementName as NSString).isEqual(to: "dailyBoxOffice")
-        if(elementName as NSString).isEqual(to: "item")
+        if(elementName as NSString).isEqual(to: "dailyBoxOffice")
         {
             elements = NSMutableDictionary()
             elements = [:]
-            /*
+            
             title1 = NSMutableString()
             title1 = ""
+            
+            /*
             date = NSMutableString()
             date = ""
-            */
+ 
             imageurl = NSMutableString()
             imageurl = ""
+            */
         }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String!)
     {
-        /*
+        
         if element.isEqual(to: "movieNm") {
             title1.append(string)
-        } else if element.isEqual("openDt") {
+            //pageImages.append(thumbnailParser.getThumbnail(movieName: title1 as String))
+        }
+        /*
+        else if element.isEqual("openDt") {
             date.append(string)
         }else if element.isEqual("thumbnail") {
             imageurl.append(string)
         }
- */
+
         if element.isEqual("thumbnail") {
             imageurl.append(string)
         }
+        */
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!)
     {
-        if (elementName as NSString).isEqual(to: "item") {
-            /*
+        if (elementName as NSString).isEqual(to: "dailyBoxOffice") {
+            
             if !title1.isEqual(nil) {
                 elements.setObject(title1, forKey: "movieNm" as NSCopying)
+            
             }
+            /*
             if !date.isEqual(nil) {
                 elements.setObject(date, forKey: "openDt" as NSCopying)
             }
@@ -81,9 +94,11 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XML
                 elements.setObject(date, forKey: "thumbnail" as NSCopying)
             }
             */
+            /*
             if !imageurl.isEqual(nil){
-                elements.setObject(date, forKey: "thumbnail" as NSCopying)
+                elements.setObject(imageurl, forKey: "thumbnail" as NSCopying)
             }
+            */
             posts.add(elements)
         }
     }
@@ -164,27 +179,37 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XML
     override func viewDidLoad() {
         super.viewDidLoad()
         beginParsing()
-        
-        if let url = URL(string: (posts.object(at: 0) as AnyObject).value(forKey: "imageurl") as! NSString as String)
+        pageImages.append(thumbnailParser.getThumbnail(movieName: "겟 아웃"))
+        /*
+        if let url = URL(string: "http://t1.search.daumcdn.net/thumb/R438x0.q85/?fname=http%3A%2F%2Fcfile189.uf.daum.net%2Fimage%2F156F1B10AB48241E6AB36C")
         {
             if let data = try? Data(contentsOf: url)
             {
+                pageImages.append(UIImage(data: data)!)
+                /*
                 pageImages = [UIImage(data: data)!,
                               UIImage(named: "photo2.png")!,
                               UIImage(named: "photo3.png")!,
                               UIImage(named: "photo4.png")!,
                               UIImage(named: "photo5.png")!]
+                 */
             }
         }
+
         
-        /*
+        pageImages.append(UIImage(named: "photo2.png")!)
+        pageImages.append(UIImage(named: "photo3.png")!)
+        pageImages.append(UIImage(named: "photo4.png")!)
+        pageImages.append(UIImage(named: "photo5.png")!)
+        var movieName = (posts[0] as AnyObject).value(forKey: "movieNm")
+        
+ 
         pageImages = [UIImage(named: "photo1.png")!,
                       UIImage(named: "photo2.png")!,
                       UIImage(named: "photo3.png")!,
                       UIImage(named: "photo4.png")!,
                       UIImage(named: "photo5.png")!]
          */
-        
         let pageCount = pageImages.count
         
         pageControl.currentPage = 0
