@@ -14,7 +14,7 @@ class ThumbnailParser: UIViewController, XMLParserDelegate {
     var imageurl = NSMutableString()
     var a = String()
     
-    let daumQuery = "https://apis.daum.net/contents/movie?apikey=ec4371baf735ac91f514b3dca6f74ff6&q="
+    let daumQuery = "https://apis.daum.net/contents/movie?apikey=4a121d2045a347303c2fc99cb1dbc950&q="
     
     func getThumbnail(movieName: String) -> UIImage
     {
