@@ -36,16 +36,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Search"/>
                                 <connections>
-                                    <segue destination="BIZ-a3-wqO" kind="show" id="cx3-ic-ZMQ"/>
+                                    <segue destination="S5Q-vu-pJz" kind="show" id="lgh-8B-tEO"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hij-ck-EvP">
-                                <rect key="frame" x="70" y="74" width="236" height="30"/>
+                                <rect key="frame" x="80" y="74" width="226" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvs-Eg-9kx">
+                                <rect key="frame" x="9" y="74" width="63" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -54,7 +59,13 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="금주의 박스오피스" id="Wqn-PU-1FL"/>
+                    <navigationItem key="navigationItem" title="금주의 박스오피스" id="Wqn-PU-1FL">
+                        <barButtonItem key="rightBarButtonItem" title="영화관 검색" id="n3Y-nb-ieS">
+                            <connections>
+                                <segue destination="tn2-CY-xby" kind="show" id="Xcg-2W-R1s"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="SearchWord" destination="Hij-ck-EvP" id="RrG-3Z-REI"/>
@@ -66,10 +77,42 @@
             </objects>
             <point key="canvasLocation" x="2064.8000000000002" y="119.1904047976012"/>
         </scene>
-        <!--검색 정보-->
+        <!--Map View Controller-->
+        <scene sceneID="E9N-fI-6wX">
+            <objects>
+                <viewController id="tn2-CY-xby" customClass="MapViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KSB-R6-yTX"/>
+                        <viewControllerLayoutGuide type="bottom" id="vFa-qs-fI8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T2e-Zf-big">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0j-wv-J7g">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l0j-wv-J7g" firstAttribute="bottom" secondItem="vFa-qs-fI8" secondAttribute="top" id="IdG-qT-FPC"/>
+                            <constraint firstAttribute="trailing" secondItem="l0j-wv-J7g" secondAttribute="trailing" id="KCt-ag-YEj"/>
+                            <constraint firstItem="l0j-wv-J7g" firstAttribute="top" secondItem="KSB-R6-yTX" secondAttribute="bottom" id="PeF-ax-Fte"/>
+                            <constraint firstItem="l0j-wv-J7g" firstAttribute="leading" secondItem="T2e-Zf-big" secondAttribute="leading" id="frv-Du-1MM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="l0j-wv-J7g" id="ueX-u9-9uM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oxu-YA-Dlg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2928.8000000000002" y="453.82308845577217"/>
+        </scene>
+        <!--영화 상세 정보-->
         <scene sceneID="ol0-gS-Mfy">
             <objects>
-                <viewController id="BIZ-a3-wqO" customClass="SearchMovieViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailSearch" title="영화 상세 정보" id="BIZ-a3-wqO" customClass="SearchMovieViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qr4-XB-urK"/>
                         <viewControllerLayoutGuide type="bottom" id="JnG-gw-9ms"/>
@@ -79,11 +122,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O6i-tc-5db">
-                                <rect key="frame" x="67" y="72" width="240" height="296"/>
+                                <rect key="frame" x="67" y="72" width="240" height="344"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BkK-ah-pnp">
-                                <rect key="frame" x="16" y="387" width="343" height="260"/>
+                                <rect key="frame" x="16" y="424" width="343" height="223"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -91,20 +134,20 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lUs-sa-Pus" id="Mk9-0d-u2D">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uxb-P3-TLC">
-                                                    <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="8" width="26.5" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V3X-e7-baF">
-                                                    <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                                    <rect key="frame" x="15" y="24" width="37.5" height="12"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -120,7 +163,6 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="검색 정보" id="lbX-Ii-G2d"/>
                     <connections>
                         <outlet property="moviePoster" destination="O6i-tc-5db" id="05T-Ux-zGr"/>
                         <outlet property="tbData" destination="BkK-ah-pnp" id="DRb-9M-0Kh"/>
@@ -128,7 +170,66 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bR-l3-RtK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2839.1999999999998" y="119.1904047976012"/>
+            <point key="canvasLocation" x="3823" y="-232"/>
+        </scene>
+        <!--검색 결과-->
+        <scene sceneID="56l-gW-gfb">
+            <objects>
+                <viewController title="검색 결과" id="S5Q-vu-pJz" customClass="SearchResultViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QAX-gn-DgK"/>
+                        <viewControllerLayoutGuide type="bottom" id="dvj-ik-TNi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7L9-9p-4tL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TJr-Ej-opl">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="xmM-TT-GUD" detailTextLabel="ZM9-Oz-jEb" style="IBUITableViewCellStyleSubtitle" id="6eZ-wm-c7e">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6eZ-wm-c7e" id="jnY-dl-eH0">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xmM-TT-GUD">
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZM9-Oz-jEb">
+                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="S5Q-vu-pJz" id="fwQ-7g-EjS"/>
+                                    <outlet property="delegate" destination="S5Q-vu-pJz" id="eR9-1n-Ka0"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="tbData" destination="TJr-Ej-opl" id="39q-Bv-QtY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KVE-Ee-pQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2928.8000000000002" y="-232.53373313343329"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aeO-sv-LX8">

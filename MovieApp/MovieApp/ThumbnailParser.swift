@@ -12,20 +12,20 @@ class ThumbnailParser: UIViewController, XMLParserDelegate {
     var parser = XMLParser()
     var element = NSString()
     var imageurl = NSMutableString()
-    var a = String()
+    var thumbnailURL = String()
     
-    let daumQuery = "https://apis.daum.net/contents/movie?apikey=4a121d2045a347303c2fc99cb1dbc950&q="
+    let daumQuery = "https://apis.daum.net/contents/movie?apikey=ec4371baf735ac91f514b3dca6f74ff6&q="
     
     func getThumbnail(movieName: String) -> UIImage
     {
-        a = ""
+        thumbnailURL = ""
         let addr = daumQuery + movieName
         let encodedParam = addr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         parser = XMLParser(contentsOf:(URL(string: encodedParam!))!)!
         parser.delegate = self
         parser.parse()
         
-        let url = URL(string: a)
+        let url = URL(string: thumbnailURL)
         let data = try? Data(contentsOf: url!)
         
         return UIImage(data: data!)!
@@ -56,8 +56,8 @@ class ThumbnailParser: UIViewController, XMLParserDelegate {
     {
         if (elementName as NSString).isEqual(to: "thumbnail") {
             
-            if a.isEqual("") {
-                a.append(imageurl as String)
+            if thumbnailURL.isEqual("") {
+                thumbnailURL.append(imageurl as String)
             }
         }
     }

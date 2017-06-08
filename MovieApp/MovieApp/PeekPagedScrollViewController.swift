@@ -32,8 +32,14 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XML
     */
     func beginParsing()
     {
+        let todaysDate = NSDate()
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        var DateInFormat = dateFormatter.string(from: todaysDate as Date)
+        DateInFormat = String((Int(DateInFormat)! - 1))
+        
         posts = []
-        parser = XMLParser(contentsOf:(URL(string:"http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=9441603806499445c9216fe146a530e2&targetDt=20170527"))!)!
+        parser = XMLParser(contentsOf:(URL(string:"http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=9441603806499445c9216fe146a530e2&targetDt=" + DateInFormat))!)!
         parser.delegate = self
         parser.parse()
     }
@@ -182,7 +188,7 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XML
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dest = segue.destination
-        guard let rvc = dest as? SearchMovieViewController else {
+        guard let rvc = dest as? SearchResultViewController else {
             return
         }
         rvc.searchWord = SearchWord.text!

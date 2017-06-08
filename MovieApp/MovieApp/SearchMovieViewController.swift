@@ -10,36 +10,45 @@ import UIKit
 
 class SearchMovieViewController: UIViewController, XMLParserDelegate {
     var searchWord = String()
+    var selectMovieCd = String()
+    var selectMovieNm = String()
     var parser = XMLParser()
     var posts = NSMutableArray()
     var elements = NSMutableArray()
     var element = NSString()
     var movieNm = NSMutableString()
     var openDt = NSMutableString()
-    var genreAlt = NSMutableString()
+    var genres = NSMutableArray()
+    var directors = NSMutableArray()
+    var actors = NSMutableArray()
     var thumbnailParser = ThumbnailParser()
-    //var director = NSMutableString()
+    var isDirector = Bool()
+    var isActor = Bool()
     
     @IBOutlet weak var tbData: UITableView!
     @IBOutlet weak var moviePoster: UIImageView!
     
     func beginParsing()
     {
+        print("비깅파서")
+        print(selectMovieCd)
+        print(selectMovieNm)
+        
         posts = []
-        let addr = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.xml?key=430156241533f1d058c603178cc3ca0e&movieNm=" + searchWord
+        let addr = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=430156241533f1d058c603178cc3ca0e&movieCd=" + selectMovieCd
         let encodedParam = addr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         parser = XMLParser(contentsOf:(URL(string: encodedParam!))!)!
         parser.delegate = self
         parser.parse()
         tbData!.reloadData()
-        moviePoster.image = thumbnailParser.getThumbnail(movieName: searchWord)
+        moviePoster.image = thumbnailParser.getThumbnail(movieName: selectMovieNm)
         //moviePoster.image = thumbnailParser.getThumbnail()
     }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String])
     {
         element = elementName as NSString
-        if(elementName as NSString).isEqual(to: "movie")
+        if(elementName as NSString).isEqual(to: "movieInfo")
         {
             elements = NSMutableArray()
             elements = []
@@ -47,10 +56,14 @@ class SearchMovieViewController: UIViewController, XMLParserDelegate {
             movieNm = ""
             openDt = NSMutableString()
             openDt = ""
-            genreAlt = NSMutableString()
-            genreAlt = ""
-            //director = NSMutableString()
-            //director = ""
+            genres = NSMutableArray()
+            genres = []
+            directors = NSMutableArray()
+            directors = []
+            actors = NSMutableArray()
+            actors = []
+            isDirector = true
+            isActor = true
         }
     }
     
@@ -60,28 +73,42 @@ class SearchMovieViewController: UIViewController, XMLParserDelegate {
             movieNm.append(string)
         } else if element.isEqual("openDt") {
             openDt.append(string)
-        } else if element.isEqual("genreAlt"){
-            genreAlt.append(string)
-        } //else if element.isEqual("director"){
-        //director.append(string)
-        //}
+        } else if element.isEqual("genreNm"){
+            genres.add(string)
+        } else if (element.isEqual("peopleNm") && isDirector){
+            directors.add(string)
+        } else if (element.isEqual("peopleNm") && isActor){
+            actors.add(string)
+        }
+        if element.isEqual(to: "director"){
+            isDirector = true
+            isActor = false
+            print("감독")
+        } else if element.isEqual(to: "actor"){
+            isDirector = false
+            isActor = true
+            print("배우")
+        }
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!)
     {
-        if (elementName as NSString).isEqual(to: "movie") {
+        if (elementName as NSString).isEqual(to: "movieInfo") {
             if !movieNm.isEqual(nil) {
                 elements.add(movieNm)
             }
             if !openDt.isEqual(nil) {
                 elements.add(openDt)
             }
-            if !genreAlt.isEqual(nil) {
-                elements.add(genreAlt)
+            if !genres.isEqual(nil) {
+                elements.add(genres)
             }
-            //if !director.isEqual(nil) {
-            //elements.add(director)
-            //}
+            if !directors.isEqual(nil) {
+                elements.add(directors)
+            }
+            if !actors.isEqual(nil) {
+                elements.add(actors)
+            }
             posts.add(elements)
         }
     }
@@ -101,17 +128,64 @@ class SearchMovieViewController: UIViewController, XMLParserDelegate {
         }
         if(indexPath.row == 0){
             cell.textLabel?.text = "타이틀"
+            cell.detailTextLabel?.text = elements.object(at: indexPath.row) as! String
         }
         
         if(indexPath.row == 1){
             cell.textLabel?.text = "개봉일"
+            cell.detailTextLabel?.text = elements.object(at: indexPath.row) as! String
         }
         
         if(indexPath.row == 2){
             cell.textLabel?.text = "장르"
+            var genresList = ""
+            for i in 0..<(elements.object(at: indexPath.row) as AnyObject).count
+            {
+                if(i < (elements.object(at: indexPath.row) as AnyObject).count - 1)
+                {
+                    genresList += (elements.object(at: indexPath.row) as AnyObject).object(at: i) as! String + ", "
+                }
+                else
+                {
+                    genresList += (elements.object(at: indexPath.row) as AnyObject).object(at: i) as! String
+                }
+            }
+            cell.detailTextLabel?.text = genresList
+        }
+        if(indexPath.row == 3){
+            cell.textLabel?.text = "감독"
+            var directorList = ""
+            for i in 0..<(elements.object(at: indexPath.row) as AnyObject).count
+            {
+                if(i < (elements.object(at: indexPath.row) as AnyObject).count - 1)
+                {
+                    directorList += (elements.object(at: indexPath.row) as AnyObject).object(at: i) as! String + ", "
+                }
+                else
+                {
+                    directorList += (elements.object(at: indexPath.row) as AnyObject).object(at: i) as! String
+                }
+            }
+            cell.detailTextLabel?.text = directorList
         }
         
-        cell.detailTextLabel?.text = elements.object(at: indexPath.row) as! String
+        if(indexPath.row == 4){
+            cell.textLabel?.text = "배우"
+            var actorList = ""
+            for i in 0..<(elements.object(at: indexPath.row) as AnyObject).count
+            {
+                if(i < (elements.object(at: indexPath.row) as AnyObject).count - 1)
+                {
+                    actorList += (elements.object(at: indexPath.row) as AnyObject).object(at: i) as! String + ", "
+                }
+                else
+                {
+                    actorList += (elements.object(at: indexPath.row) as AnyObject).object(at: i) as! String
+                }
+            }
+            cell.detailTextLabel?.text = actorList
+        }
+        
         
         return cell as UITableViewCell
     }
@@ -123,12 +197,16 @@ class SearchMovieViewController: UIViewController, XMLParserDelegate {
             moviePoster.image = thumbnailParser.getThumbnail(movieName: sender as! String)
         }
     }
- */
+    */
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("뷰디드로드")
+        print(selectMovieCd)
+        print(selectMovieNm)
         beginParsing()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
     
     override func didReceiveMemoryWarning() {
