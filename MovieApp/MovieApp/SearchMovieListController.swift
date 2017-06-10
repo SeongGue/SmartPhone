@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchResultViewController: UIViewController, XMLParserDelegate {
+class SearchMovieListController: UIViewController, XMLParserDelegate {
     var selectMovieCd = String()
     var selectMovieNm = String()
     var searchWord = String()
@@ -98,20 +98,16 @@ class SearchResultViewController: UIViewController, XMLParserDelegate {
     {
         selectMovieCd = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "movieCd") as! NSString as String
         selectMovieNm = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "movieNm") as! NSString as String
-        print("테이비ㅡㄹ뷰 셀렉트")
-        print(selectMovieCd)
-        print(selectMovieNm)
-        guard let uvc = self.storyboard?.instantiateViewController(withIdentifier: "DetailSearch") as? SearchMovieViewController
+
+        guard let uvc = self.storyboard?.instantiateViewController(withIdentifier: "DetailSearch") as? SearchDetailDataViewController
             else{
                 return
         }
         uvc.selectMovieCd = selectMovieCd
         uvc.selectMovieNm = selectMovieNm
-        print("프리페어")
-        print(selectMovieCd)
-        print(selectMovieNm)
+        
         self.present(uvc, animated: true)
-        //self.performSegue(withIdentifier: "DetailMovieData", sender: self)
+    
     }
     
     
@@ -128,18 +124,6 @@ class SearchResultViewController: UIViewController, XMLParserDelegate {
         return cell as UITableViewCell
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DetailMovieData"{
-            if let navController = segue.destination as? SearchMovieViewController{
-                navController.selectMovieCd = selectMovieCd
-                navController.selectMovieNm = selectMovieNm
-                print("프리페어")
-                print(selectMovieCd)
-                print(selectMovieNm)
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

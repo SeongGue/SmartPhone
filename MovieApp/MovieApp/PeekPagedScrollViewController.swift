@@ -188,7 +188,7 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XML
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dest = segue.destination
-        guard let rvc = dest as? SearchResultViewController else {
+        guard let rvc = dest as? SearchMovieListController else {
             return
         }
         rvc.searchWord = SearchWord.text!

@@ -57,5 +57,4 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         // Do any additional setup after loading the view.
     }
-
 }

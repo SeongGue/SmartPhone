@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchMovieViewController: UIViewController, XMLParserDelegate {
+class SearchDetailDataViewController: UIViewController, XMLParserDelegate {
     var searchWord = String()
     var selectMovieCd = String()
     var selectMovieNm = String()
@@ -28,12 +28,12 @@ class SearchMovieViewController: UIViewController, XMLParserDelegate {
     @IBOutlet weak var tbData: UITableView!
     @IBOutlet weak var moviePoster: UIImageView!
     
+    @IBAction func dismiss(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
     func beginParsing()
     {
-        print("비깅파서")
-        print(selectMovieCd)
-        print(selectMovieNm)
-        
         posts = []
         let addr = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=430156241533f1d058c603178cc3ca0e&movieCd=" + selectMovieCd
         let encodedParam = addr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
@@ -190,20 +190,9 @@ class SearchMovieViewController: UIViewController, XMLParserDelegate {
         return cell as UITableViewCell
     }
     
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Search Word"
-        {
-            moviePoster.image = thumbnailParser.getThumbnail(movieName: sender as! String)
-        }
-    }
-    */
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("뷰디드로드")
-        print(selectMovieCd)
-        print(selectMovieNm)
         beginParsing()
         // Do any additional setup after loading the view, typically from a nib.
         
