@@ -65,6 +65,14 @@ class SearchDetailDataViewController: UIViewController, XMLParserDelegate {
             isDirector = true
             isActor = true
         }
+        
+        if (elementName as NSString).isEqual(to: "director"){
+            isDirector = true
+            isActor = false
+        } else if (elementName as NSString).isEqual(to: "actor"){
+            isDirector = false
+            isActor = true
+        }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String!)
@@ -79,15 +87,6 @@ class SearchDetailDataViewController: UIViewController, XMLParserDelegate {
             directors.add(string)
         } else if (element.isEqual("peopleNm") && isActor){
             actors.add(string)
-        }
-        if element.isEqual(to: "director"){
-            isDirector = true
-            isActor = false
-            print("감독")
-        } else if element.isEqual(to: "actor"){
-            isDirector = false
-            isActor = true
-            print("배우")
         }
     }
     

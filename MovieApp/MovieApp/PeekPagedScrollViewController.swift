@@ -7,10 +7,12 @@
 //
 import UIKit
 
-class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XMLParserDelegate {
+class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XMLParserDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var SearchWord: UITextField!
-
+    @IBOutlet weak var pickerView: UIPickerView!
+    var pickerDataSource = ["영화명", "감독명", "개봉년도"]
+    var sgguCd : String = "movieNm="
     @IBOutlet var pageControl: UIPageControl!
     
     var thumbnailParser = ThumbnailParser()
@@ -155,6 +157,10 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XML
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.pickerView.dataSource = self
+        self.pickerView.delegate = self
+        
         beginParsing()
 
         for i in 0..<posts.count{
@@ -178,6 +184,39 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XML
         
         loadVisiblePages()
     }
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerDataSource.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerDataSource[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if row == 0{
+            sgguCd = "movieNm="
+        } else if row == 1{
+            sgguCd = "directorNm="
+        } else if row == 2{
+            sgguCd = "openStartDt="
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label = view as! UILabel!
+        if label == nil {
+            label = UILabel()
+        }
+        
+        var data = pickerDataSource[row]
+        let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 12.0, weight: UIFontWeightRegular)])
+        label?.attributedText = title
+        label?.textAlignment = .center
+        return label!
+
+    }
 
 
     override func didReceiveMemoryWarning() {
@@ -192,6 +231,7 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XML
             return
         }
         rvc.searchWord = SearchWord.text!
+        rvc.searchKeyword = sgguCd
     }
     
 

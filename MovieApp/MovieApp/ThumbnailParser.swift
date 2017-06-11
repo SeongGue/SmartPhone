@@ -26,9 +26,14 @@ class ThumbnailParser: UIViewController, XMLParserDelegate {
         parser.parse()
         
         let url = URL(string: thumbnailURL)
-        let data = try? Data(contentsOf: url!)
         
-        return UIImage(data: data!)!
+        if(url != nil){
+            let data = try? Data(contentsOf: url!)
+            return UIImage(data: data!)!
+        }
+        else{
+            return UIImage(named: "no_img.png")!
+        }
     }
     
     

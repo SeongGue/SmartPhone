@@ -11,7 +11,7 @@
 		E70429781EEAC76A00CDAB04 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70429771EEAC76A00CDAB04 /* WebViewController.swift */; };
 		E71144C61ED593FA003012A9 /* ThumbnailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71144C51ED593FA003012A9 /* ThumbnailParser.swift */; };
 		E7116CB11EE58371005B8797 /* SearchMovieListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7116CB01EE58371005B8797 /* SearchMovieListController.swift */; };
-		E71A56231EE4FC4F005B61A4 /* Theater.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71A56221EE4FC4F005B61A4 /* Theater.swift */; };
+		E717C6551EED3A2D00B14F25 /* no_img.png in Resources */ = {isa = PBXBuildFile; fileRef = E717C6541EED3A2D00B14F25 /* no_img.png */; };
 		E71AAA251EDAE7EF009CEF43 /* SearchDetailDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71AAA241EDAE7EF009CEF43 /* SearchDetailDataViewController.swift */; };
 		E71AB40D1ECC36BC00044DA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71AB40C1ECC36BC00044DA6 /* AppDelegate.swift */; };
 		E71AB4121ECC36BC00044DA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71AB4101ECC36BC00044DA6 /* Main.storyboard */; };
@@ -25,7 +25,7 @@
 		E70429771EEAC76A00CDAB04 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		E71144C51ED593FA003012A9 /* ThumbnailParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailParser.swift; sourceTree = "<group>"; };
 		E7116CB01EE58371005B8797 /* SearchMovieListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMovieListController.swift; sourceTree = "<group>"; };
-		E71A56221EE4FC4F005B61A4 /* Theater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theater.swift; sourceTree = "<group>"; };
+		E717C6541EED3A2D00B14F25 /* no_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_img.png; sourceTree = "<group>"; };
 		E71AAA241EDAE7EF009CEF43 /* SearchDetailDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDetailDataViewController.swift; sourceTree = "<group>"; };
 		E71AB4091ECC36BC00044DA6 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E71AB40C1ECC36BC00044DA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +66,7 @@
 		E71AB40B1ECC36BC00044DA6 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				E717C6541EED3A2D00B14F25 /* no_img.png */,
 				E71AB40C1ECC36BC00044DA6 /* AppDelegate.swift */,
 				E71AB4101ECC36BC00044DA6 /* Main.storyboard */,
 				E71AB4131ECC36BC00044DA6 /* Assets.xcassets */,
@@ -74,7 +75,6 @@
 				E71FC9671ECEA4F9006D812A /* PeekPagedScrollViewController.swift */,
 				E71144C51ED593FA003012A9 /* ThumbnailParser.swift */,
 				E71AAA241EDAE7EF009CEF43 /* SearchDetailDataViewController.swift */,
-				E71A56221EE4FC4F005B61A4 /* Theater.swift */,
 				E7116CB01EE58371005B8797 /* SearchMovieListController.swift */,
 				E70429751EEAC5D100CDAB04 /* SelectTheaterViewController.swift */,
 				E70429771EEAC76A00CDAB04 /* WebViewController.swift */,
@@ -143,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E71AB4171ECC36BC00044DA6 /* LaunchScreen.storyboard in Resources */,
+				E717C6551EED3A2D00B14F25 /* no_img.png in Resources */,
 				E71AB4141ECC36BC00044DA6 /* Assets.xcassets in Resources */,
 				E71AB4121ECC36BC00044DA6 /* Main.storyboard in Resources */,
 			);
@@ -160,7 +161,6 @@
 				E7116CB11EE58371005B8797 /* SearchMovieListController.swift in Sources */,
 				E71AB40D1ECC36BC00044DA6 /* AppDelegate.swift in Sources */,
 				E71FC9681ECEA4F9006D812A /* PeekPagedScrollViewController.swift in Sources */,
-				E71A56231EE4FC4F005B61A4 /* Theater.swift in Sources */,
 				E71AAA251EDAE7EF009CEF43 /* SearchDetailDataViewController.swift in Sources */,
 				E70429781EEAC76A00CDAB04 /* WebViewController.swift in Sources */,
 			);

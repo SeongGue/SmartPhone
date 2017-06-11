@@ -22,6 +22,7 @@ class SearchMovieListController: UIViewController, XMLParserDelegate {
     //var selectMovieCd = String()
     var thumbnailParser = ThumbnailParser()
     //var director = NSMutableString()
+    var searchKeyword = String()
     
     
     @IBOutlet weak var tbData: UITableView!
@@ -30,7 +31,7 @@ class SearchMovieListController: UIViewController, XMLParserDelegate {
     func beginParsing()
     {
         posts = []
-        let addr = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.xml?key=430156241533f1d058c603178cc3ca0e&movieNm=" + searchWord
+        let addr = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.xml?key=430156241533f1d058c603178cc3ca0e&" + searchKeyword + searchWord
         let encodedParam = addr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         parser = XMLParser(contentsOf:(URL(string: encodedParam!))!)!
         parser.delegate = self

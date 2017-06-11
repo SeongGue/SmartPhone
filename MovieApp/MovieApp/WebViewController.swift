@@ -15,6 +15,10 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     
     var selectTheater = Int()
     
+    @IBAction func dismiss(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
     func selectTheaterURL() -> String
     {
         var theaterURL = String()
@@ -22,10 +26,10 @@ class WebViewController: UIViewController, UIWebViewDelegate {
             theaterURL = "http://www.lottecinema.co.kr/LCMW/Contents/Ticketing/ticketing.aspx#none"
         }
         else if selectTheater == 1{
-            theaterURL = "http://m.cgv.co.kr/WebAPP/Member/Login.aspx?RedirectURL=http%3a%2f%2fm.cgv.co.kr%2fquickReservation%2fdefault.aspx"
+            theaterURL = "http://m.cgv.co.kr"
         }
         else if selectTheater == 2{
-            theaterURL = "http://www.megabox.co.kr/?menuId=movie"
+            theaterURL = "http://m.megabox.co.kr"
         }
         return theaterURL
     }

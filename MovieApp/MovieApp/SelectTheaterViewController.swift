@@ -26,7 +26,8 @@ class SelectTheaterViewController: UIViewController {
         }
         uvc.selectTheater = selectTheater
         
-        self.present(uvc, animated: true)
+        //self.present(uvc, animated: true)
+        self.navigationController?.pushViewController(uvc, animated: true)
         
     }
     
