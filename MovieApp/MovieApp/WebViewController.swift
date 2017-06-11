@@ -11,7 +11,6 @@ import UIKit
 class WebViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var wv: UIWebView!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var selectTheater = Int()
     
@@ -68,14 +67,14 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
-        self.spinner.startAnimating()
+        
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        self.spinner.stopAnimating()
+        
     }
+    
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        self.spinner.stopAnimating()
         
         let alert = UIAlertController(title: "오류", message: "상세페이지를 읽어오지 못했습니다.", preferredStyle: .alert)
         

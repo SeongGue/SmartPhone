@@ -64,7 +64,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="금주의 박스오피스" id="Wqn-PU-1FL">
-                        <barButtonItem key="rightBarButtonItem" title="영화예매" id="n3Y-nb-ieS">
+                        <barButtonItem key="rightBarButtonItem" title="영화관" id="n3Y-nb-ieS">
                             <connections>
                                 <segue destination="tn2-CY-xby" kind="show" id="nrq-lh-XkW"/>
                             </connections>
@@ -125,7 +125,7 @@
             </objects>
             <point key="canvasLocation" x="2929" y="476"/>
         </scene>
-        <!--영화관 예매-->
+        <!--영화관-->
         <scene sceneID="A3r-AI-1vM">
             <objects>
                 <viewController storyboardIdentifier="WebViewController" id="CjY-e6-oQt" customClass="WebViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -142,23 +142,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="C0g-kV-ntW">
-                                <rect key="frame" x="177" y="323" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="영화관 예매" id="CyE-Rj-dqX"/>
+                    <navigationItem key="navigationItem" title="영화관" id="CyE-Rj-dqX"/>
                     <connections>
-                        <outlet property="spinner" destination="C0g-kV-ntW" id="mQ9-D2-Xpl"/>
                         <outlet property="wv" destination="PsM-N6-CWl" id="K5f-8U-EyK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZ3-OM-Hs4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4665" y="475"/>
+            <point key="canvasLocation" x="4661.6000000000004" y="473.6131934032984"/>
         </scene>
         <!--영화 상세 정보-->
         <scene sceneID="ol0-gS-Mfy">

@@ -11,7 +11,7 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XML
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var SearchWord: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
-    var pickerDataSource = ["영화명", "감독명", "개봉년도"]
+    var pickerDataSource = ["영화명", "감독명"]
     var sgguCd : String = "movieNm="
     @IBOutlet var pageControl: UIPageControl!
     
@@ -200,8 +200,6 @@ class PeekPagedScrollViewController: UIViewController, UIScrollViewDelegate, XML
             sgguCd = "movieNm="
         } else if row == 1{
             sgguCd = "directorNm="
-        } else if row == 2{
-            sgguCd = "openStartDt="
         }
     }
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

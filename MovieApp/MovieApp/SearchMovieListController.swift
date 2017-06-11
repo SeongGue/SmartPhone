@@ -27,7 +27,7 @@ class SearchMovieListController: UIViewController, XMLParserDelegate {
     
     @IBOutlet weak var tbData: UITableView!
     //@IBOutlet weak var moviePoster: UIImageView!
-    
+   
     func beginParsing()
     {
         posts = []
