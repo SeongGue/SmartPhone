@@ -17,6 +17,7 @@
 		E71AB4121ECC36BC00044DA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71AB4101ECC36BC00044DA6 /* Main.storyboard */; };
 		E71AB4141ECC36BC00044DA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E71AB4131ECC36BC00044DA6 /* Assets.xcassets */; };
 		E71AB4171ECC36BC00044DA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71AB4151ECC36BC00044DA6 /* LaunchScreen.storyboard */; };
+		E71C36CB1EF0F7B000A33C8E /* Launch_img.png in Resources */ = {isa = PBXBuildFile; fileRef = E71C36CA1EF0F7B000A33C8E /* Launch_img.png */; };
 		E71FC9681ECEA4F9006D812A /* PeekPagedScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FC9671ECEA4F9006D812A /* PeekPagedScrollViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		E71AB4131ECC36BC00044DA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E71AB4161ECC36BC00044DA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E71AB4181ECC36BC00044DA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E71C36CA1EF0F7B000A33C8E /* Launch_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch_img.png; sourceTree = "<group>"; };
 		E71FC9671ECEA4F9006D812A /* PeekPagedScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeekPagedScrollViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 		E71AB40B1ECC36BC00044DA6 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				E71C36CA1EF0F7B000A33C8E /* Launch_img.png */,
 				E717C6541EED3A2D00B14F25 /* no_img.png */,
 				E71AB40C1ECC36BC00044DA6 /* AppDelegate.swift */,
 				E71AB4101ECC36BC00044DA6 /* Main.storyboard */,
@@ -145,6 +148,7 @@
 				E71AB4171ECC36BC00044DA6 /* LaunchScreen.storyboard in Resources */,
 				E717C6551EED3A2D00B14F25 /* no_img.png in Resources */,
 				E71AB4141ECC36BC00044DA6 /* Assets.xcassets in Resources */,
+				E71C36CB1EF0F7B000A33C8E /* Launch_img.png in Resources */,
 				E71AB4121ECC36BC00044DA6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

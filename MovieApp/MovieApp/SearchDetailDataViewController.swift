@@ -126,7 +126,7 @@ class SearchDetailDataViewController: UIViewController, XMLParserDelegate {
             cell = Bundle.main.loadNibNamed("Cell", owner: self, options: nil)?[0] as! UITableViewCell;
         }
         if(indexPath.row == 0){
-            cell.textLabel?.text = "타이틀"
+            cell.textLabel?.text = "영화제목"
             cell.detailTextLabel?.text = elements.object(at: indexPath.row) as! String
         }
         
